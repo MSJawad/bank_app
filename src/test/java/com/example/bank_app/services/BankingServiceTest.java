@@ -107,7 +107,6 @@ class BankingServiceTest {
 
     /**
      * Tests withdrawing cash from a savings account with insufficient balance to cover the fee.
-     * Ensures an exception is thrown with the correct message.
      */
     @Test
     void testWithdrawCash_SavingsAccount_InsufficientBalanceForFee() {

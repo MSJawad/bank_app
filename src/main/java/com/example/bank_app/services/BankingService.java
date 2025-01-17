@@ -28,15 +28,21 @@ public class BankingService {
     }
 
     public Account depositCash(Integer id, double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Invalid deposit amount");
+        }
         Account account = getAccount(id).orElseThrow(
-                        () -> new RuntimeException("Account not found"));
+                        () -> new IllegalArgumentException("Account not found"));
         account.setBalance(account.getBalance() + amount);
         return accountPool.save(account);
     }
 
     private Account withdrawCash(Integer id, double amount, boolean accountTransfer) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Invalid withdrawal amount");
+        }
         Account account = getAccount(id).orElseThrow(
-                () -> new RuntimeException("Account not found"));
+                () -> new IllegalArgumentException("Account not found"));
         String accountType = account.getAccountType();
 
         double accountBalance = account.getBalance();
@@ -46,7 +52,8 @@ public class BankingService {
 
         if (accountBalance < totalDeductibles) {
             if (accountBalance > amount) {
-                throw new RuntimeException("Account balance cannot cover savings account cash withdrawal fees");
+                throw new RuntimeException("Account balance cannot cover savings account " +
+                        "cash withdrawal fees");
             }
             throw new RuntimeException("Insufficient funds");
         }
@@ -59,10 +66,13 @@ public class BankingService {
     }
 
     public List<Account> transferCash(Integer fromTransferId, Integer toTransferId, double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Invalid transfer amount");
+        }
         Account fromAccount = getAccount(fromTransferId).orElseThrow(() ->
-                new RuntimeException("Source account not found"));
+                new IllegalArgumentException("Source account not found"));
         Account toAccount = getAccount(toTransferId).orElseThrow(() ->
-                new RuntimeException("Destination account not found"));
+                new IllegalArgumentException("Destination account not found"));
 
         if (!fromAccount.getAccountHolderName().equalsIgnoreCase(toAccount.getAccountHolderName())) {
             throw new RuntimeException("Source account holder name does not match destination account holder name");

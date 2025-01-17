@@ -10,22 +10,32 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.bank_app.services.BankingService;
 
+import java.util.Arrays;
 import java.util.List;
 
 
 @RestController
+@RequestMapping("/api/accounts")
 public class BankingController {
 
     @Autowired
     private BankingService bankingService;
 
-    @GetMapping("/api/test")
+    @GetMapping("/test")
     public String getString() {
-        return "Hello World";
+        return "Hello User";
     }
 
-    @PostMapping
+    private static boolean validAccount(Account account) {
+        return account.getBalance() > 0 && !account.getAccountHolderName().isEmpty()
+                && (Arrays.asList("chequing", "savings").contains(account.getAccountType().toLowerCase()));
+    }
+
+    @PostMapping("/createAccount")
     public Account createAccount(@RequestBody Account account) {
+        if (!validAccount(account)) {
+            throw new IllegalArgumentException("Invalid account parameters");
+        }
         return bankingService.createAccount(account);
     }
 
@@ -49,7 +59,7 @@ public class BankingController {
         List<Account> accounts = bankingService.transferCash(transferRequest.getAccountFromId(),
                 transferRequest.getAccountToId(), transferRequest.getAmount());
         if (accounts.size() != 2) {
-            throw new RuntimeException("Undefined number of accounts found during transfer");
+            throw new RuntimeException("Undefined number of accounts found during transfer request completion");
         }
         return new TransferResponse(accounts.get(0), accounts.get(1));
     }
