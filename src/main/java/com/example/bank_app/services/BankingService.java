@@ -1,10 +1,9 @@
 package com.example.bank_app.services;
 
 import com.example.bank_app.store.AccountPool;
-import com.example.bank_app.entities.Account;
+import com.example.bank_app.models.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

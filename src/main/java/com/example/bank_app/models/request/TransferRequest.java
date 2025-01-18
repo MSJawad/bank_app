@@ -1,4 +1,4 @@
-package com.example.bank_app.controllers.request;
+package com.example.bank_app.models.request;
 
 import lombok.Getter;
 

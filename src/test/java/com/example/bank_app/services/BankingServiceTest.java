@@ -1,6 +1,6 @@
 package com.example.bank_app.services;
 
-import com.example.bank_app.entities.Account;
+import com.example.bank_app.models.Account;
 import com.example.bank_app.store.AccountPool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

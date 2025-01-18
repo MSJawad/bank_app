@@ -1,10 +1,10 @@
 package com.example.bank_app.controllers;
 
-import com.example.bank_app.controllers.request.DepositRequest;
-import com.example.bank_app.controllers.request.TransferRequest;
-import com.example.bank_app.controllers.request.WithdrawRequest;
-import com.example.bank_app.controllers.response.TransferResponse;
-import com.example.bank_app.entities.Account;
+import com.example.bank_app.models.request.DepositRequest;
+import com.example.bank_app.models.request.TransferRequest;
+import com.example.bank_app.models.request.WithdrawRequest;
+import com.example.bank_app.models.response.TransferResponse;
+import com.example.bank_app.models.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

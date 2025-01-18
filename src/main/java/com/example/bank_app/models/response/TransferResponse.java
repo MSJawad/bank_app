@@ -1,6 +1,6 @@
-package com.example.bank_app.controllers.response;
+package com.example.bank_app.models.response;
 
-import com.example.bank_app.entities.Account;
+import com.example.bank_app.models.Account;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
