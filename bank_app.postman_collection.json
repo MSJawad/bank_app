@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "1decc8bb-e911-4691-b42e-dd15e513c1de",
+		"name": "bank_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41212819"
+	},
+	"item": [
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "createAccount",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzM3MjA2MTEzLCJleHAiOjE3MzcyMDk3MTN9.7MoLevgWu7JITDhO_lHpoQVcu3nVaD3hT4xINQEcFL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzM3MTk5OTg5LCJleHAiOjE3MzcyMDM1ODl9._GYFiOzEpqpvjXhMX6DtH2XHjfGl9d_ajOpXWr4POP0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountHolderName\": \"Jawad\",\n    \"balance\": 1000,\n    \"accountType\": \"savings\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/accounts/createAccount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts",
+						"createAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"amount\": 50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/accounts/deposit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "withdraw",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"amount\": 50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/accounts/withdraw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts",
+						"withdraw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountFromId\": 3,\n    \"accountToId\": 1,\n    \"amount\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/accounts/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"accounts",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
